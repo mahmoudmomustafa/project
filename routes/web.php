@@ -17,20 +17,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard/receviers', 'ShipmentController@showRecevies')->name('receviers')->middleware('auth');
+Route::get('/dashboard/receviers', 'ShipmentController@showRecevies')->name('receviers')->middleware('isAdmin');
 
+Route::resource('/dashboard/shipments', 'ShipmentController')->middleware('isAdmin');
+Route::resource('/dashboard/customers', 'CustomerController')->middleware('isAdmin');
+Route::resource('/dashboard/users', 'DriverController')->middleware('isAdmin');
 
-
-Route::resource('/dashboard/shipments', 'ShipmentController')->middleware('auth');
-Route::resource('/dashboard/customers', 'CustomerController')->middleware('auth');
-Route::resource('/dashboard/users', 'DriverController')->middleware('auth');
-
-Route::get('/dashboard/shipments/todriver/{shipment}/edit', 'ShipmentController@editDriver')->middleware('auth');
-Route::patch('/dashboard/shipments/todriver/{shipment}', 'ShipmentController@updateDriver')->middleware('auth');
+Route::get('/dashboard/shipments/todriver/{shipment}/edit', 'ShipmentController@editDriver')->middleware('isAdmin');
+Route::patch('/dashboard/shipments/todriver/{shipment}', 'ShipmentController@updateDriver')->middleware('isAdmin');
 
 // exports
 Route::get('users/export/', 'DriverController@export')->name('UserExport');
 Route::get('customers/export/', 'CustomerController@export')->name('CustomerExport');
 Route::get('shipments/export/', 'ShipmentController@export')->name('ShipmentExport');
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+Route::get('/profile','HomeController@show')->name('profile');

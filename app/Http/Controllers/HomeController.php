@@ -7,6 +7,7 @@ use App\Shipment;
 use App\Customer;
 use App\Recevier;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,10 +28,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $drivers = User::where('type','driver')->get();
+        $drivers = User::where('type', 'driver')->get();
         $customers = Customer::get();
         $receviers = Recevier::get();
         $shipments = Shipment::get();
-        return view('dashboard',compact('shipments','drivers','customers','receviers'));
+        if(Auth::user()->type == 'admin'){ 
+        return view('dashboard', compact('shipments', 'drivers', 'customers', 'receviers'));
+        }else {
+            return abort(403);
+        }
+    }
+    public function show()
+    {
+        // Auth::user();
+        $shipments = Shipment::where('driver_id', Auth::user()->id)->get();
+        return view('pages.user.show', compact('shipments'));
     }
 }

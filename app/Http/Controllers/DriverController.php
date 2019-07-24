@@ -71,9 +71,8 @@ class DriverController extends Controller
      */
     public function show(User $user)
     {
-        $shipment = Shipment::get();
-        $user = User::were('type','driver')->get();
-        return view('pages.user.show',compact('user'));
+        // $shipments = Shipment::where('driver_id', Auth::user()->id)->get();
+        // return view('pages.user.show', compact('shipments'));
     }
 
     /**

@@ -1,3 +1,4 @@
+@if(Auth::user()->type == 'admin')
 @section('sidebar')
 {{-- sidebar --}}
 <div class="side">
@@ -9,13 +10,6 @@
         DashBoard
       </a>
     </li>
-    {{-- to driver --}}
-    {{-- <li class="nav-item">
-      <a class="nav-link" href="/dashboard/toDrive/create">
-        <img src="/img/icons/wheel.svg" alt="home" width="30" height="30" class="mr-3">
-        to Driver
-      </a>
-    </li> --}}
     <!-- Create -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true"
@@ -46,8 +40,8 @@
         </div>
       </div>
     </li>
-
   </ul>
   <div class="toggle"></div>
 </div>
 @endsection
+@endif

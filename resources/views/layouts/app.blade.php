@@ -27,7 +27,7 @@
         {{-- top nav --}}
         <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{route('dashboard')}}">
+                <a class="navbar-brand" href="/">
                     <span class="brand">ON</span>
                     <small class="span">Road</small>
                 </a>
