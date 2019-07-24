@@ -26,7 +26,7 @@
         <div class="row">
           <div class="col mr-2">
             <div class="font-weight-bold text-info text-uppercase mb-3">Out Door Drivers</div>
-            <div class="h5 mb-0 font-weight-bold">52</div>
+            <div class="h5 mb-0 font-weight-bold">{{$drivers->count()}}</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-truck fa-4x"></i>
@@ -42,7 +42,7 @@
         <div class="row">
           <div class="col mr-2">
             <div class="font-weight-bold text-primary text-uppercase mb-3">Deliverd Orders</div>
-            <div class="h5 mb-0 font-weight-bold">52</div>
+          <div class="h5 mb-0 font-weight-bold">52</div>
           </div>
           <div class="col-auto">
             <i class="fas fa-check fa-4x"></i>

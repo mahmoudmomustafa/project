@@ -24,10 +24,9 @@
    {{-- top nav --}}
    <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-laravel">
       <div class="container">
-         <a class="navbar-brand font-weight-bold text-primary" href="{{route('dashboard')}}">
-            <img src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30"
-               class="d-inline-block align-top" alt="">
-            roject
+         <a class="navbar-brand" href="/">
+            <span class="brand">ON</span>
+            <small class="span">Road</small>
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -48,9 +47,9 @@
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                </li>
                @if (Route::has('register'))
-               <li class="nav-item">
+               {{-- <li class="nav-item">
                   <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-               </li>
+               </li> --}}
                @endif
                @else
                <li class="nav-item dropdown">
@@ -121,7 +120,7 @@
                               <!-- password input -->
                               <input id="password" type="password"
                                  class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
-                                 required>
+                                 required autocomplete="off">
 
                               @if ($errors->has('password'))
                               <span class="invalid-feedback" role="alert">
@@ -132,13 +131,18 @@
                         </div>
                      </div>
                      <!-- Remember me -->
-                     <div class="form-group form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                           {{ old('remember') ? 'checked' : '' }}>
+                     <div class="form-group form-check col">
+                        <div class="checkbox">
+                           <input id="remember" type="checkbox" name="gender" {{ old('remember') ? 'checked' : '' }}
+                              name="remember">
+                           <label class="form-check-label" for="remember">{{ __('Remember Me') }}</label>
+                        </div>
+                        {{-- <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                           {{ old('remember') ? 'checked' : '' }}> --}}
 
-                        <label class="form-check-label" for="remember">
+                        {{-- <label class="form-check-label" for="remember">
                            {{ __('Remember Me') }}
-                        </label>
+                        </label> --}}
                      </div>
                      <!-- submit btn -->
                      <div class="form-group row mb-0">
@@ -161,9 +165,7 @@
       </div>
    </div>
    <!-- script files -->
-   <script src="vendor/jquery/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
    <script src="js/script.js"></script>
 </body>
 

@@ -270,6 +270,32 @@ form {
 }
 
 .card {
-    /* height: 100%; */
     margin-top: .5rem !important;
+}
+
+/* checkbox login */
+.checkbox {
+    background: #1f1f1f;
+    box-shadow: 1px 1px 9px #565656;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox label {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 0;
+    transition: 500ms ease-in-out;
+}
+
+.checkbox input[type="checkbox"]:checked~label {
+    transition: 500ms ease-in-out;
+    background-color: #45f;
+    border-radius: 5px;
+    color: #fcfcfc;
 }
