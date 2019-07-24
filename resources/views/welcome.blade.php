@@ -85,10 +85,27 @@
             </div>
         </nav>
         {{-- sidebar and main content --}}
-        <div class="content">
-            <h3>
-                hello world
-            </h3>
+        <div class="container">
+            <div class="card text-center mt-4">
+                <img src="\img\search.svg" class="card-img-top mt-2" width="" height="210">
+                <div class="card-body">
+                    <h5 class="card-title text-primary font-weight-bold">On Road</h5>
+                    <p class="card-text">Search now to Know Your Shipment State</p>
+                    <div class="row">
+                        <div class="col">
+                            <form method="get" action="/">
+                                @csrf
+                                <input class="form-control mr-sm-2 text-center" type="search" placeholder="Search"
+                                    aria-label="Search" name="shipmentNum">
+                                <a href="#" class="btn btn-success col-md-6 mt-4">Search</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {{$shipment}}
+                </div>
+            </div>
         </div>
     </div>
     {{-- scripts --}}
