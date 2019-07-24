@@ -16,10 +16,13 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->type == 'admin') {
-            return $next($request);
-        } else {
-            return abort(403);
+        if (Auth::user()) {
+            if (Auth::user()->type == 'admin') {
+                return $next($request);
+            } else {
+                return abort(403);
+            }
         }
+        return abort(403);
     }
 }
