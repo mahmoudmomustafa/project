@@ -84,7 +84,7 @@ class DriverController extends Controller
      */
     public function edit(User $user)
     {
-        return view('dashboard/user/edit', compact('user'));
+        return view('pages/user/edit', compact('user'));
     }
 
     /**
@@ -98,7 +98,7 @@ class DriverController extends Controller
     {
         $this->validate($request, [
             'name' => ['required', 'string', 'min:4', 'max:255'],
-            'email' => ['required','string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required','string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'acQualification' => ['required', 'max:255'],
             'brithDate' => ['required', 'date'],

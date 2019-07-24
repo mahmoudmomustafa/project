@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 use App\Customer;
 use Illuminate\Http\Request;
 use App\Exports\CustomerExport;
@@ -76,8 +77,7 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        return view('dashboard/customer/edit', compact('customer'));
-        //
+        return view('pages/customer/edit', compact('customer'));
     }
 
     /**
@@ -90,13 +90,13 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     {
         $this->validate($request, [
-            'account-name' => ['required','unique:customers', 'string', 'max:255'],
-            'account-num' => ['required','unique:customers', 'max:255'],
-            'customer-name' => ['required', 'string', 'max:255'],
-            'customer-num' => ['required','unique:customers', 'max:12'],
-            'customer-comp' => ['required', 'string', 'max:255'],
-            'customer-address' => ['required', 'string', 'max:255'],
-            'customer-postal' => ['required', 'string', 'max:255'],
+            'accountName' => ['required', 'string', 'max:255'],
+            'accountNum' => ['required', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'max:12'],
+            'company' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'postal' => ['required', 'string', 'max:255'],
         ]);
         $customer->update($request->all());
         return redirect('/dashboard/customers')->with('message', 'Customer was Updated');

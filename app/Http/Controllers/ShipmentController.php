@@ -97,7 +97,7 @@ class ShipmentController extends Controller
     public function edit(Shipment $shipment)
     {
         // $category = Category::findOrFail($shipment);
-        return view('dashboard/shipments/edit', compact('shipment'));
+        return view('pages/shipments/edit', compact('shipment'));
     }
 
     /**
