@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Exports\ShipmentExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Shipment;
@@ -8,12 +9,11 @@ use App\Customer;
 use App\ShipmentState;
 use Illuminate\Http\Request;
 use App\Recevier;
-use App\User;
 
 class ShipmentController extends Controller
 {
     // exports
-    public function export() 
+    public function export()
     {
         return Excel::download(new ShipmentExport, 'shipments.xlsx');
     }
@@ -50,7 +50,7 @@ class ShipmentController extends Controller
     {
         $this->validate($request, [
             // Shipment
-            'shipmentNum' => ['required','unique:shipments'],
+            'shipmentNum' => ['required', 'unique:shipments'],
             'type' => ['required'],
             'weight' => ['required'],
             'width' => ['required'],
@@ -60,7 +60,7 @@ class ShipmentController extends Controller
             'pickupDate' => ['required'],
             // recevie
             'companyName' => ['required'],
-            'accountNum' => ['required','unique:receviers'],
+            'accountNum' => ['required', 'unique:receviers'],
             'name' => ['required'],
             'mobile' => ['required'],
             'address' => ['required'],
@@ -96,8 +96,9 @@ class ShipmentController extends Controller
      */
     public function edit(Shipment $shipment)
     {
-        // $category = Category::findOrFail($shipment);
-        return view('pages/shipments/edit', compact('shipment'));
+        $customers = Customer::get();
+        $shipmentStates = ShipmentState::get();
+        return view('pages/shipment/edit', compact('customers', 'shipmentStates', 'shipment'));
     }
 
     /**
@@ -107,10 +108,10 @@ class ShipmentController extends Controller
      * @param  \App\Shipment  $shipment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shipment $shipment)
+    public function update(Request $request, Shipment $shipment, Recevier $recevier)
     {
         $shipment->update($request->all());
-        return redirect('/backend/categories')->with('message', 'Category was Updated');
+        return redirect('/backend/shipments')->with('message', 'Shipment was Updated');
     }
 
     /**
@@ -125,10 +126,16 @@ class ShipmentController extends Controller
         $shipment->delete();
         return redirect('/dashboard/shipments')->with('message', 'Shipment was Deleted');
     }
-    public function toDriver()
+    // show recevies
+    public function showRecevies()
     {
-        $drivers = User::where('type','driver');
-        $shipments = Shipment::get();
-        return view('pages.shipmentAndDriver',compact('shipments','drivers'));
+        $receviers = Recevier::get();
+        return view('pages.receviers', compact('receviers'));
     }
+    // public function toDriver()
+    // {
+    //     $drivers = User::where('type','driver');
+    //     $shipments = Shipment::get();
+    //     return view('pages.shipmentAndDriver',compact('shipments','drivers'));
+    // }
 }

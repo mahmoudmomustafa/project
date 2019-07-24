@@ -204,11 +204,10 @@ form {
 
 .center {
     /* background-color: #343a40; */
-    background-color: #DCD9D4; 
- background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%); 
- background-blend-mode: soft-light,screen;
+    background-color: #DCD9D4;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(0, 0, 0, 0.50) 50%);
+    background-blend-mode: soft-light, screen;
     padding: 40px;
-    /* border: 1px solid #989898; */
     border-radius: 5px;
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
@@ -269,7 +268,8 @@ form {
     top: 0;
     right: 0;
 }
-.card{
+
+.card {
     /* height: 100%; */
     margin-top: .5rem !important;
 }

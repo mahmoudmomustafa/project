@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/dashboard/receviers', 'ShipmentController@showRecevies')->name('receviers')->middleware('auth');
+
+
 Route::resource('/dashboard/shipments', 'ShipmentController')->middleware('auth');
 Route::resource('/dashboard/customers', 'CustomerController')->middleware('auth');
 Route::resource('/dashboard/users', 'DriverController')->middleware('auth');

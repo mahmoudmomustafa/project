@@ -10,16 +10,17 @@
       </a>
     </li>
     {{-- to driver --}}
-    {{-- <li class="nav-item">
-      <a class="nav-link" href="{{route('toDriver')}}">
+    <li class="nav-item">
+      <a class="nav-link" href="">
         <img src="/img/icons/wheel.svg" alt="home" width="30" height="30" class="mr-3">
         to Driver
       </a>
-    </li> --}}
+    </li>
     <!-- Create -->
     <li class="nav-item">
       <a class="nav-link collapsed" href="/" data-toggle="collapse" data-target="#collapsePagess" aria-expanded="true"
-        aria-controls="collapsePages"><img src="/img/icons/database.svg" alt="database" width="30" height="30" class="mr-3">
+        aria-controls="collapsePages"><img src="/img/icons/database.svg" alt="database" width="30" height="30"
+          class="mr-3">
         Create
       </a>
       <div id="collapsePagess" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -40,11 +41,12 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="/dashboard/shipments">List of Shipments</a>
           <a class="collapse-item" href="/dashboard/customers">List of Customers</a>
+          <a class="collapse-item" href="{{route('receviers')}}">List of Receviers</a>
           <a class="collapse-item" href="/dashboard/users">List of Users</a>
         </div>
       </div>
     </li>
-    
+
   </ul>
   <div class="toggle"></div>
 </div>

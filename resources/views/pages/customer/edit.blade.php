@@ -24,8 +24,9 @@
     <!-- account no. -->
     <div class="form-group col-md-6">
       <label for="accountNum">Account Number<span class="text-red">*</span></label>
-      <input type="text" value="{{$customer->accountNum}}" class="form-control {{ $errors->has('accountNum') ? ' is-invalid' : '' }}"
-        placeholder="Enter Account Number" name="accountNum" id="accountNum">
+      <input type="text" value="{{$customer->accountNum}}"
+        class="form-control {{ $errors->has('accountNum') ? ' is-invalid' : '' }}" placeholder="Enter Account Number"
+        name="accountNum" id="accountNum">
       @if($errors->has('accountNum'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('accountNum') }}</strong>
@@ -38,8 +39,9 @@
     <!-- customer name -->
     <div class="form-group col-md-6">
       <label for="name">Full Name<span class="text-red">*</span></label>
-      <input type="text" value="{{$customer->name}}" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}"
-        placeholder="Enter Full Name" name="name" id="name">
+      <input type="text" value="{{$customer->name}}"
+        class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Enter Full Name" name="name"
+        id="name">
       @if($errors->has('name'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('name') }}</strong>
@@ -49,8 +51,9 @@
     <!-- customer phone number -->
     <div class="form-group col-md-6">
       <label for="phone">Phone Number<span class="text-red">*</span></label>
-      <input type="number"value="{{$customer->phone}}" class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}"
-        placeholder="Enter Phone Number" name="phone" id="phone">
+      <input type="number" value="{{$customer->phone}}"
+        class="form-control {{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="Enter Phone Number"
+        name="phone" id="phone">
       @if($errors->has('phone'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('phone') }}</strong>
@@ -61,8 +64,9 @@
   <!-- company name -->
   <div class="form-group">
     <label for="company">Company Name<span class="text-red">*</span></label>
-    <input type="text" value="{{$customer->company}}" class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}"
-      placeholder="Enter customer Company" name="company" id="company">
+    <input type="text" value="{{$customer->company}}"
+      class="form-control {{ $errors->has('company') ? ' is-invalid' : '' }}" placeholder="Enter customer Company"
+      name="company" id="company">
     @if($errors->has('company'))
     <span class="invalid-feedback" role="alert">
       <strong>{{ $errors->first('company') }}</strong>
@@ -74,8 +78,9 @@
     <!-- adress -->
     <div class="form-group col-md-8">
       <label for="address">Address<span class="text-red">*</span></label>
-      <input type="text" value="{{$customer->address}}" class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}"
-        placeholder="Address..." name="address" id="address" >
+      <input type="text" value="{{$customer->address}}"
+        class="form-control {{ $errors->has('address') ? ' is-invalid' : '' }}" placeholder="Address..." name="address"
+        id="address">
       @if($errors->has('address'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('address') }}</strong>
@@ -85,8 +90,9 @@
     <!-- zip number -->
     <div class="form-group col-md-4">
       <label for="address">Postal Number<span class="text-red">*</span></label>
-      <input type="number" value="{{$customer->postal}}" class="form-control {{ $errors->has('postal') ? ' is-invalid' : '' }}"
-        placeholder="Enter Postal Code" name="postal" id="postal" >
+      <input type="number" value="{{$customer->postal}}"
+        class="form-control {{ $errors->has('postal') ? ' is-invalid' : '' }}" placeholder="Enter Postal Code"
+        name="postal" id="postal">
       @if($errors->has('postal'))
       <span class="invalid-feedback" role="alert">
         <strong>{{ $errors->first('postal') }}</strong>

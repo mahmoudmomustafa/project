@@ -3,7 +3,8 @@
 @extends('layouts.sidebar')
 @section('content')
 <!--creat shipment form -->
-<form method="POST" class="center" action="/dashboard/shipments">
+<form method="POST" class="center" action="/dashboard/shipments/{{$shipment->id}}">
+  @method('patch')
   @csrf
   <!-- Customer -->
   <div id="customer row">
@@ -13,8 +14,8 @@
       <label for="id_label_single">
         Select Customer :
       </label>
-      <select class="js-example-basic-single js-states form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-        id="customerSelect" name="customer_id">
+      <select class="js-example-basic-single js-states form-control {{$errors->has('customer_id') ? 'is-invalid' : ''}}"
+        id="customerSelect" value="{{$shipment->customer_id}}" name="customer_id">
         <option selected disabled>Customer Name</option>
         @foreach ($customers as $customer)
         <option value="{{$customer->id}}">{{$customer->name}}</option>
@@ -22,35 +23,10 @@
       </select>
       @if($errors->has('customer_id'))
       <span class="invalid-feedback" role="alert">
-        <strong>{{ $errors->first('customer_id') }}</strong>
+        <strong>{{$errors->first('customer_id')}}</strong>
       </span>
       @endif
-      <a class="m-2" href="/dashboard/customers/create">+ADD New</a>
     </div>
-    <!-- Customer info -->
-    {{-- <div class="customerInfo col-lg-6">
-      <ul>
-          <li>
-              <label><strong>Account Name : </strong></label>
-              <p>{{$customer->accountName}}</p>
-    </li>
-    <!-- customer name -->
-    <li>
-      <label><strong>Name : </strong></label>
-      <p>{{$customer->name}}</p>
-    </li>
-    <!-- customer number -->
-    <li>
-      <label><strong>Phone No. : </strong></label>
-      <p>{{$customer->phone}}</p>
-    </li>
-    <!-- customer Address -->
-    <li>
-      <label><strong>Company :</strong> </label>
-      <p>{{$customer->company}}</p>
-    </li>
-    </ul>
-  </div> --}}
   </div>
   <!--Devider-->
   <hr class="sidebar-divider my-4">
@@ -62,8 +38,9 @@
       <!-- company name -->
       <div class="form-group">
         <label for="companyName">Company Name<span class="text-red">*</span></label>
-        <input type="text" class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}"
-          placeholder="Enter Receiver Company" name="companyName" id="companyName">
+        <input type="text" value="{{$shipment->recevier['companyName']}}"
+          class="form-control {{$errors->has('companyName') ? 'is-invalid' : ''}}" placeholder="Enter Receiver Company"
+          name="companyName" id="companyName">
         @if($errors->has('companyName'))
         <span class="invalid-feedback" role="alert">
           <strong>{{ $errors->first('companyName') }}</strong>
@@ -73,8 +50,9 @@
       <!-- reciver account no. -->
       <div class="form-group">
         <label for="accountNum">Account Number<span class="text-red">*</span></label>
-        <input type="text" class="form-control {{$errors->has('accountNum') ? 'is-invalid' : ''}}"
-          placeholder="Enter Account Number" name="accountNum" id="accountNum">
+        <input type="text" value="{{$shipment->recevier['accountNum']}} "
+          class="form-control {{$errors->has('accountNum') ? 'is-invalid' : ''}}" placeholder="Enter Account Number"
+          name="accountNum" id="accountNum">
         @if($errors->has('accountNum'))
         <span class="invalid-feedback" role="alert">
           <strong>{{ $errors->first('accountNum') }}</strong>
@@ -85,8 +63,9 @@
         <!-- receiver name -->
         <div class="form-group col-md-6">
           <label for="name">Receiver Name<span class="text-red">*</span></label>
-          <input type="text" class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}"
-            placeholder="Enter Receiver Name" name="name" id="name">
+          <input type="text" value="{{$shipment->recevier['name']}}"
+            class="form-control {{$errors->has('name') ? 'is-invalid' : ''}}" placeholder="Enter Receiver Name"
+            name="name" id="name">
           @if($errors->has('name'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('name') }}</strong>
@@ -96,8 +75,9 @@
         <!-- receiver no. -->
         <div class="form-group col-md-6">
           <label for="mobile">Receiver Number<span class="text-red">*</span></label>
-          <input type="number" class="form-control {{$errors->has('mobile') ? 'is-invalid' : ''}}"
-            placeholder="Enter Receiver Number" name="mobile" id="mobile">
+          <input type="number" value="{{$shipment->recevier['mobile']}}"
+            class="form-control {{$errors->has('mobile') ? 'is-invalid' : ''}}" placeholder="Enter Receiver Number"
+            name="mobile" id="mobile">
           @if($errors->has('mobile'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('mobile') }}</strong>
@@ -110,8 +90,9 @@
         {{-- adrress --}}
         <div class="form-group col-md-8">
           <label for="address">Address<span class="text-red">*</span></label>
-          <input type="text" class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}"
-            placeholder="Address..." name="address" id="address">
+          <input type="text" value="{{$shipment->recevier['address']}} "
+            class="form-control {{$errors->has('address') ? 'is-invalid' : ''}}" placeholder="Address..." name="address"
+            id="address">
           @if($errors->has('address'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('address') }}</strong>
@@ -121,8 +102,8 @@
         <!-- zip no. -->
         <div class="form-group col-md-4">
           <label for="postal">Zip</label>
-          <input placeholder="Zip Code" type="text" class="form-control {{$errors->has('postal') ? 'is-invalid' : ''}}"
-            id="postal" name="postal">
+          <input placeholder="Zip Code" type="text" value="{{$shipment->recevier['postal']}} "
+            class="form-control {{$errors->has('postal') ? 'is-invalid' : ''}}" id="postal" name="postal">
           @if($errors->has('postal'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('postal') }}</strong>
@@ -142,8 +123,9 @@
       <!-- shipment number -->
       <div class="form-group">
         <label for="shipmentNum">Shipment Number<span class="text-red">*</span></label>
-        <input type="number" class="form-control {{$errors->has('shipmentNum') ? 'is-invalid' : ''}}"
-          placeholder="Enter Shipment Number" name="shipmentNum" id="shipmentNum">
+        <input type="number" value="{{$shipment->shipmentNum}}"
+          class="form-control {{$errors->has('shipmentNum') ? 'is-invalid' : ''}}" placeholder="Enter Shipment Number"
+          name="shipmentNum" id="shipmentNum">
         @if($errors->has('shipmentNum'))
         <span class="invalid-feedback" role="alert">
           <strong>{{ $errors->first('shipmentNum') }}</strong>
@@ -153,8 +135,9 @@
       <!-- type of shipment -->
       <div class="form-group">
         <label for="type">Type of shipment<span class="text-red">*</span></label>
-        <input type="text" class="form-control {{$errors->has('type') ? 'is-invalid' : ''}}" placeholder="Shipment type"
-          name="type" id="type">
+        <input type="text" value="{{$shipment->type}} "
+          class="form-control {{$errors->has('type') ? 'is-invalid' : ''}}" placeholder="Shipment type" name="type"
+          id="type">
         @if($errors->has('type'))
         <span class="invalid-feedback" role="alert">
           <strong>{{ $errors->first('type') }}</strong>
@@ -166,8 +149,8 @@
         <!-- Shipment weight -->
         <div class="form-group col-md-6">
           <label for="weight">Shipment Weight</label>
-          <input placeholder="Weight" type="text" class="form-control {{$errors->has('weight') ? 'is-invalid' : ''}}"
-            id="weight" name="weight">
+          <input placeholder="Weight" value="{{$shipment->weight}}" type="text"
+            class="form-control {{$errors->has('weight') ? 'is-invalid' : ''}}" id="weight" name="weight">
           @if($errors->has('weight'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('weight') }}</strong>
@@ -177,8 +160,8 @@
         <!-- Shipment width x height -->
         <div class="form-group col-md-4">
           <label for="width">Width x Height</label>
-          <input placeholder="Width x Height" class="form-control {{$errors->has('width') ? 'is-invalid' : ''}}"
-            type="text" name="width" id="width">
+          <input placeholder="Width x Height" value="{{$shipment->width}} "
+            class="form-control {{$errors->has('width') ? 'is-invalid' : ''}}" type="text" name="width" id="width">
           @if($errors->has('width'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('width') }}</strong>
@@ -188,7 +171,7 @@
         <!-- Shipment Quantity -->
         <div class="form-group col-md-2">
           <label for="quantity">Quantity</label>
-          <input placeholder="Quantity" type="text"
+          <input placeholder="Quantity" type="text" value="{{$shipment->quantity}}"
             class="form-control {{$errors->has('quantity') ? 'is-invalid' : ''}}" id="quantity" name="quantity">
           @if($errors->has('quantity'))
           <span class="invalid-feedback" role="alert">
@@ -202,7 +185,7 @@
         <!-- payment method -->
         <div class="form-group col-md-6">
           <label for="paymentMethod">Payment Method</label>
-          <select name="paymentMethod" id="paymentMethod"
+          <select name="paymentMethod" id="paymentMethod" value="{{$shipment->paymentMethod}}"
             class="form-control {{$errors->has('paymentMethod') ? 'is-invalid' : ''}}">
             <option selected disabled>Select State ...</option>
             <option value="express">Express</option>
@@ -218,8 +201,8 @@
         <!-- Shipment price -->
         <div class="form-group col-md-6">
           <label for="price">Shipment price</label>
-          <input placeholder="Price" class="form-control {{$errors->has('price') ? 'is-invalid' : ''}}" type="number"
-            name="price" id="price">
+          <input placeholder="Price" value="{{$shipment->price}}"
+            class="form-control {{$errors->has('price') ? 'is-invalid' : ''}}" type="number" name="price" id="price">
           @if($errors->has('price'))
           <span class="invalid-feedback" role="alert">
             <strong>{{ $errors->first('price') }}</strong>
@@ -232,7 +215,7 @@
         <!-- pickup date -->
         <div class="form-group col-md-6">
           <label for="pickupDate">Pickup date</label>
-          <input type="date" name="pickupDate" id="pickupDate"
+          <input type="date" name="pickupDate" value="{{$shipment->pickupDate}}" id="pickupDate"
             class="form-control {{$errors->has('pickupDate') ? 'is-invalid' : ''}}">
           @if($errors->has('pickupDate'))
           <span class="invalid-feedback" role="alert">
@@ -243,8 +226,8 @@
         <!-- Shipment state -->
         <div class="form-group col-md-6">
           <label for="state_id">Shipment state</label>
-          <select placeholder="state" class="form-control {{$errors->has('state_id') ? 'is-invalid' : ''}}"
-            id="state_id" name="state_id">
+          <select placeholder="state" value="{{$shipment->shipmentState['state']}}"
+            class="form-control {{$errors->has('state_id') ? 'is-invalid' : ''}}" id="state_id" name="state_id">
             <option selected disabled>Select State ...</option>
             @foreach ($shipmentStates as $shipmentState)
             <option value="{{$shipmentState->id}}">{{$shipmentState->state}}</option>
