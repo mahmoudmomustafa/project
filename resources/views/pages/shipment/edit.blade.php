@@ -226,7 +226,7 @@
         <!-- Shipment state -->
         <div class="form-group col-md-6">
           <label for="state_id">Shipment state</label>
-          <select placeholder="state" value="{{$shipment->shipmentState['state']}}"
+          <select placeholder="state" value="{{$shipment->state_id}}"
             class="form-control {{$errors->has('state_id') ? 'is-invalid' : ''}}" id="state_id" name="state_id">
             <option selected disabled>Select State ...</option>
             @foreach ($shipmentStates as $shipmentState)

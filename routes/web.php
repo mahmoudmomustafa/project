@@ -20,11 +20,13 @@ Auth::routes();
 Route::get('/dashboard/receviers', 'ShipmentController@showRecevies')->name('receviers')->middleware('auth');
 
 
+
 Route::resource('/dashboard/shipments', 'ShipmentController')->middleware('auth');
 Route::resource('/dashboard/customers', 'CustomerController')->middleware('auth');
 Route::resource('/dashboard/users', 'DriverController')->middleware('auth');
 
-// Route::resource('/dashboard/toDriver', 'toDriverController')->name('toDriver')->middleware('auth');
+Route::get('/dashboard/shipments/todriver/{shipment}/edit', 'ShipmentController@editDriver')->middleware('auth');
+Route::patch('/dashboard/shipments/todriver/{shipment}', 'ShipmentController@updateDriver')->middleware('auth');
 
 // exports
 Route::get('users/export/', 'DriverController@export')->name('UserExport');

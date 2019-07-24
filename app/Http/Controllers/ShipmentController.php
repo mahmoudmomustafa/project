@@ -9,6 +9,7 @@ use App\Customer;
 use App\ShipmentState;
 use Illuminate\Http\Request;
 use App\Recevier;
+use App\User;
 
 class ShipmentController extends Controller
 {
@@ -71,7 +72,7 @@ class ShipmentController extends Controller
         $recevier = new Recevier($recevier);
         $recevier->save();
         $shipment =  request([
-            'shipmentNum', 'type', 'weight', 'width', 'quantity', 'paymentMethod', 'price', 'pickupDate', 'state_id', 'recevier_id', 'customer_id'
+            'shipmentNum', 'type', 'weight', 'width', 'quantity', 'paymentMethod', 'price', 'pickupDate', 'state_id', 'recevier_id', 'customer_id', 'driver_id'
         ]);
         $shipment['recevier_id'] = $recevier->id;
         Shipment::create($shipment);
@@ -132,10 +133,16 @@ class ShipmentController extends Controller
         $receviers = Recevier::get();
         return view('pages.receviers', compact('receviers'));
     }
-    // public function toDriver()
-    // {
-    //     $drivers = User::where('type','driver');
-    //     $shipments = Shipment::get();
-    //     return view('pages.shipmentAndDriver',compact('shipments','drivers'));
-    // }
+    // to Driver
+    public function editDriver(Shipment $shipment)
+    {
+        $drivers = User::where('type', 'driver')->get();
+        return view('pages.toDriver.edit', compact('shipment', 'drivers'));
+    }
+    public function updateDriver(Request $request, Shipment $shipment)
+    {
+        $shipment->driver_id = $request->driver_id;
+        $shipment->save();
+        return redirect('/dashboard/shipments')->with('message', 'Shipment was Updated');
+    }
 }

@@ -24,12 +24,13 @@
                <tr>
                   <th width='40'>ID</th>
                   <th>AWB Number</th>
-                  <th>Customer Address</th>
                   <th>Customer Name</th>
-                  <th>Receiver Address</th>
+                  <th>From</th>
+                  <th>To</th>
                   <th>Receiver Name</th>
                   <th>Pickup Date</th>
                   <th>Total Price</th>
+                  <th>Driver</th>
                   <th>Status</th>
                   <th width='80'>Actions</th>
                </tr>
@@ -39,12 +40,20 @@
                <tr>
                <td>{{$shipment->id}}</td>
                   <td>{{$shipment->shipmentNum}}</td>
-                  <td>{{$shipment->customer['address']}}</td>
                   <td>{{$shipment->customer['name']}}</td>
+                  <td>{{$shipment->customer['address']}}</td>
                   <td>{{$shipment->recevier['address']}}</td>
                   <td>{{$shipment->recevier['name']}}</td>
                   <td>{{$shipment->pickupDate}}</td>
                   <td>{{$shipment->price}}</td>
+                  <td>
+                     @if($shipment->driver_id == null)
+                        <a href="/dashboard/shipments/todriver/{{$shipment->id}}/edit" class="btn btn-xs btn-info mr-2">
+                           <i class="fa fa-plus"></i>
+                        </a>
+                     @endif   
+                       {{$shipment->driver['name']}}
+                  </td>
                   <td>{{$shipment->state['state']}}</td>
                   <td style="display: flex;">
                      <a href="/dashboard/shipments/{{$shipment->id}}/edit" class="btn btn-xs btn-success mr-2">
