@@ -91,7 +91,7 @@
         <div class="content" style="">
             @yield('sidebar')
             {{-- main ocntent --}}
-            <div class="main container">
+            <div class="main container mt-4">
                 @yield('content')
             </div>
         </div>

@@ -22,7 +22,9 @@ body {
 .row {
     margin: auto;
 }
-
+a:hover{
+    text-decoration: none !important
+}
 .side {
     box-shadow: 0 0 5px gray;
     background: linear-gradient(60deg, #29323c 0%, #485563 100%);
@@ -297,4 +299,30 @@ form {
 .statics .row .card:hover {
     box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.73) !important;
     transform: scale(1.1);
+}
+
+.orders{
+    /* border-radius: 5px; */
+    /* box-shadow: 0 0 6px #8f8f8f; */
+    overflow-y: scroll;
+    height: 270px;
+}
+.orders .navbar-nav{
+    margin: 5px 0;
+}
+.orders .list-item{
+    color: white;
+    border-radius: 5px;
+    padding: 1.1rem;
+    margin: .5rem;
+    transition: 500ms ease-in-out;
+    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+}
+
+.list-item:hover{
+    transform: scale(1.1);
+}
+
+.list-item span{
+    float: right;
 }

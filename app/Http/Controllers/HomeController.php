@@ -33,9 +33,9 @@ class HomeController extends Controller
         $customers = Customer::get();
         $receviers = Recevier::get();
         $shipments = Shipment::get();
-        $shipmentState = ShipmentState::get();
+        $shipmentStates = ShipmentState::get();
         if(Auth::user()->type == 'admin'){ 
-        return view('dashboard', compact('shipments','shipmentState', 'drivers', 'customers', 'receviers'));
+        return view('dashboard', compact('shipments','shipmentStates', 'drivers', 'customers', 'receviers'));
         }else {
             return abort(403);
         }

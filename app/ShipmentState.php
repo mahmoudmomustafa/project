@@ -10,4 +10,7 @@ class ShipmentState extends Model
     {
         return $this->hasMany(Shipment::class, 'state_id');
     }
+    public function counter(){
+        return $this->shipments()->count();
+    }
 }
