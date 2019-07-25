@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function (Request $request) {
-    $shipment = $request->shipmentNum;
-    $shipment = App\Shipment::where('shipmentNum', '=', $shipment)->get();;
+    $shipmentNum = $request->get('shipmentNum');
+    $shipment = App\Shipment::where('shipmentNum', '=', $shipmentNum)->get('state_id');
     return view('welcome',compact('shipment'));
 });
 

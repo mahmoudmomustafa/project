@@ -86,23 +86,21 @@
         </nav>
         {{-- sidebar and main content --}}
         <div class="container">
-            <div class="card text-center mt-4">
+            <div class="card text-center mt-3">
                 <img src="\img\search.svg" class="card-img-top mt-2" width="" height="210">
                 <div class="card-body">
                     <h5 class="card-title text-primary font-weight-bold">On Road</h5>
-                    <p class="card-text">Search now to Know Your Shipment State</p>
+                    <p class="card-text">Track your Shipment</p>
                     <div class="row">
                         <div class="col">
                             <form method="get" action="/">
                                 @csrf
                                 <input class="form-control mr-sm-2 text-center" type="search" placeholder="Search"
                                     aria-label="Search" name="shipmentNum">
-                                <a href="#" class="btn btn-success col-md-6 mt-4">Search</a>
+                                <button class="btn btn-success col-md-6 mt-4">Search</button>
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer text-muted">
                     {{$shipment}}
                 </div>
             </div>
@@ -110,7 +108,6 @@
     </div>
     {{-- scripts --}}
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="js/script.js"></script>
 </body>

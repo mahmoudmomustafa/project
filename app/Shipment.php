@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Shipment extends Model
@@ -25,4 +24,5 @@ class Shipment extends Model
     {
         return $this->belongsTo(ShipmentState::class);
     }
+    
 }

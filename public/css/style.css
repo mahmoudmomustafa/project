@@ -302,8 +302,6 @@ form {
 }
 
 .orders{
-    /* border-radius: 5px; */
-    /* box-shadow: 0 0 6px #8f8f8f; */
     overflow-y: scroll;
     height: 270px;
 }
