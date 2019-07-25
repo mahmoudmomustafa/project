@@ -15,7 +15,6 @@ Route::get('/', function (Request $request) {
     $shipment = $request->shipmentNum;
     $shipment = App\Shipment::where('shipmentNum', '=', $shipment)->get();;
     return view('welcome',compact('shipment'));
-    // return dd($shipment);
 });
 
 Auth::routes();

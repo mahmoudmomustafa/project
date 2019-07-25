@@ -21,7 +21,6 @@ body {
 
 .row {
     margin: auto;
-    justify-content: center
 }
 
 .side {
@@ -32,26 +31,13 @@ body {
     margin: 10px 0;
     z-index: 1;
     height: max-content;
-    /* top: 120px; */
 }
-
-/* .main {
-    flex-grow: 6;
-} */
 
 .navbar-nav {
     display: flex;
     padding-left: 0;
     margin-bottom: 0;
 }
-
-/* .bg-gray {
-    background-color: #3a3b45
-}
-
-.bg-white {
-    background-color: #c6c6c6 !important;
-} */
 
 .sidebar {
     margin: 50px 5px;
@@ -298,4 +284,17 @@ form {
     background-color: #45f;
     border-radius: 5px;
     color: #fcfcfc;
+}
+
+/* dashboard */
+.statics .row .card {
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+    color: white;
+    transition: 500ms ease-in-out;
+    border: 0 !important;
+}
+
+.statics .row .card:hover {
+    box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.73) !important;
+    transform: scale(1.1);
 }
