@@ -101,7 +101,7 @@
                             </form>
                         </div>
                     </div>
-                    {{$shipment}}
+                    {{$shipment->state->state}}
                 </div>
             </div>
         </div>
